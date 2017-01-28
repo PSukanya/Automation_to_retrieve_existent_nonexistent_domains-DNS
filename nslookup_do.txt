@@ -1,0 +1,22 @@
+import socket
+import re
+import os
+
+output_file=open(sys.args[1],'w')
+
+with open(sys.args[2],'r') as:
+    lines=file_object.readlines()
+    for file_contents in lines:
+        try:
+            host_name=socket.gethostbyname(file_contents.strip())
+            host_fqdn=socket.getfqdn(host_name)
+            output_file.write(file_contents.strip());output_file.write("\n")
+            output_file.write(host_name);output_file.write("\n")
+            output_file.write(host_fqdn);output_file.write("\n")
+            output_file.write("\n")
+            
+        except socket.gaierror,err:
+            output_file.write(file_contents)
+            output_file.write("Does not resolve")
+            pass
+output_file.close()
